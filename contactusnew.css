@@ -1,0 +1,64 @@
+.contact-container {
+    display: flex;
+    justify-content: center; /* Align items horizontally */
+    align-items: center; /* Align items vertically */
+    gap: 50px; /* Space between the cards */
+    margin: 50px auto; /* Add space around the container */
+    overflow-x: auto; /* Enable horizontal scrolling for smaller screens */
+    flex-wrap: nowrap; /* Prevent wrapping of cards to the next line */
+    width: 100%; /* Ensure the container takes full width */
+}
+
+.contact-card {
+    width: 400px;
+    height: 400px;
+    background: white;
+    border: 2px solid #00796b; /* Matches top bar color */
+    border-radius: 15px;
+    text-align: center;
+    padding: 50px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Prevent shrinking */
+    position: relative; /* Required for absolute positioning of inner elements */
+    overflow: hidden; /* Prevent overflow of text */
+    perspective: 1000px; /* Enable 3D effect */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    inset: 0; /* Fill the card area */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden; /* Ensure only one side is visible at a time */
+    transition: transform 0.3s;
+}
+
+.card-front {
+    background: white;
+    color: #00796b;
+    font-size: 24px;
+    z-index: 2; /* Keep front above initially */
+}
+
+.card-back {
+    background: #a5d0c7;
+    color: rgb(255, 255, 255);
+    transform: rotateY(180deg); /* Initially hidden */
+    font-size: 20px;
+    text-align: center;
+}
+
+.contact-card:hover .card-front {
+    transform: rotateY(180deg); /* Hide the front side on hover */
+}
+
+.contact-card:hover .card-back {
+    transform: rotateY(0); /* Show the back side on hover */
+}
